@@ -71,6 +71,13 @@ const CartItem = ({ product, name, seller, price, cuttedPrice, image, stock, qua
                     </div>
                     {/* <!-- price desc --> */}
 
+                    {/* <!-- price comment --> */}
+                    <div className="flex items-baseline gap-2 text-xl font-medium">
+                        <span className="text-sm text-gray-500 line-through font-normal">₹{(cuttedPrice * quantity).toLocaleString()}</span>
+                        <span className="text-sm text-primary-green">{getDiscount(price, cuttedPrice)}%&nbsp;off</span>
+                    </div>
+                    {/* <!-- price comment --> */}
+
                 </div>
                 {/* <!-- description --> */}
             </Link>
