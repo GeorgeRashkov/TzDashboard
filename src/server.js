@@ -3,13 +3,7 @@ const connectDatabase = require('./config/database');
 const cloudinary = require('cloudinary');
 const PORT = process.env.PORT || 4000;
 
-// UncaughtException Error
-process.on('uncaughtException', (err) => {
-    console.log(`Error: ${err.message}`);
-    process.exit(1);
-});
-
-// connectDatabase();
+connectDatabase();
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,
@@ -21,9 +15,17 @@ const server = app.listen(PORT, () => {
     console.log(`Server running`)
 });
 
-// Unhandled Promise Rejection
+
+console.log("Starting server.js...");
+
+
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err); // Log the full error object, not just the message
+  process.exit(1); // Optionally comment out this line for further investigation
+});
+
 process.on('unhandledRejection', (err) => {
-    console.log(`Error: ${err.message}`);
+    console.log(`Error: ${err}`);
     server.close(() => {
         process.exit(1);
     });

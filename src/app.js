@@ -7,8 +7,11 @@ const fileUpload = require('express-fileupload');
 const app = express();
 
 // config
+console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config({ path: 'backend/config/config.env' });
+    console.log(process.env.NODE_ENV)
+    require('dotenv').config({ path: './config/.env' });
+    console.log(process.env.MONGO_URI)
 }
 
 app.use(express.json());
