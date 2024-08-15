@@ -1,4 +1,5 @@
 const express = require("express");
+
 const path = require("path");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -13,7 +14,8 @@ if (process.env.NODE_ENV !== "production") {
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ limit: "5mb", extended: true }));
+app.use(bodyParser.json({ limit: "5mb" }));
 app.use(fileUpload());
 
 const user = require("./routes/userRoute");
