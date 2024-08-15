@@ -20,28 +20,26 @@ import ProtectedRoute from "./Routes/ProtectedRoute";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
-      <Route index element={<App />} />{" "}
-      <Route path="/login" element={<Login />} />{" "}
-      <Route path="/register" element={<Register />} />{" "}
-      <Route path="/dashboard" element={<Dashboard />} />{" "}
+      <Route index element={<App />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route
         path="/account"
         element={
           <ProtectedRoute isAdmin={false}>
-            {" "}
-            <Account />{" "}
+            <Account />
           </ProtectedRoute>
         }
-      />{" "}
+      />
       <Route
         path="/dashboard"
         element={
           <ProtectedRoute isAdmin={true}>
-            {" "}
-            <Dashboard />{" "}
+            <Dashboard />
           </ProtectedRoute>
         }
-      />{" "}
+      />
     </Route>
   )
 );
@@ -56,9 +54,9 @@ ReactDOM.render(
           horizontal: "center"
         }}
       >
-        <RouterProvider router={router} />{" "}
-      </SnackbarProvider>{" "}
-    </Provider>{" "}
+        <RouterProvider router={router} />
+      </SnackbarProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
