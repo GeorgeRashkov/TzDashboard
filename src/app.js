@@ -4,6 +4,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
 
 const app = express();
 
@@ -17,6 +18,13 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ limit: "5mb", extended: true }));
 app.use(bodyParser.json({ limit: "5mb" }));
 app.use(fileUpload());
+app.use(
+  cors({
+    credentials: true,
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"]
+  })
+);
 
 const user = require("./routes/userRoute");
 const product = require("./routes/productRoute");
